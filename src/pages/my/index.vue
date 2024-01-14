@@ -1,42 +1,37 @@
+<script setup lang="ts">
+import { useMemberStore } from '@/stores'
+import { onMounted } from 'vue';
+import { http } from '@/utils/http'
+
+const memberStore = useMemberStore()
+onMounted(async () => {
+  const res = await http<number[]>({
+    method: 'GET',
+    url: '',
+    header: {},
+  })
+  console.log('获取数据成功', res.result)
+})
+</script>
+
 <template>
-    <view class="content">
-      <image class="logo" src="/static/logo.png"></image>
-      <view class="text-area">
-        <text class="title">{{ title }}</text>
-      </view>
-    </view>
-  </template>
-  
-  <script setup>
-  const title = '我的'
-  
-  </script>
-  
-  <style>
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logo {
-    height: 200rpx;
-    width: 200rpx;
-    margin-top: 200rpx;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50rpx;
-  }
-  
-  .text-area {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .title {
-    font-size: 36rpx;
-    color: #8f8f94;
-  }
-  </style>
+  <view class="my">
+    <view>会员信息：{{ memberStore.profile }}</view>
+    <button @tap="
+      memberStore.setProfile({
+        nickname: '黑马先锋',
+        token: '12345 '
+      })
+      " size="mini" plain type="primary">
+      保存用户信息
+    </button>
+    <button @tap="memberStore.clearProfile()" size="mini" plain type="warn">
+      清理用户信息
+    </button>
+  </view>
+</template>
+
+<style lang="scss">
+//
+</style>
   

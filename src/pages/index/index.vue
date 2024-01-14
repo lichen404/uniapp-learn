@@ -1,48 +1,63 @@
-<template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png"></image>
-    <uni-card
-      title="1"
-    >
-      
-    </uni-card>
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
-  </view>
-</template>
-
 <script setup lang="ts">
+import { onLoad } from '@dcloudio/uni-app';
+import CustomNavbar from '../../components/CustomNavbar.vue'
+import { getHomeBanner, getHomeCategory, getHomeHot } from '../../services/home';
 import { ref } from 'vue';
+import type { BannerItem, CategoryItem, HotItem } from '@/types/home';
+import CategoryPanel from './components/CategoryPanel.vue';
+import HotPanel from './components/HotPanel.vue';
 
-const title = ref("hello")
 
+const bannerList = ref<BannerItem[]>([])
+const categoryList = ref<CategoryItem[]>([])
+
+// 获取轮播图数据
+const getHomeBannerData = async () => {
+  const res = await getHomeBanner()
+  bannerList.value = res.result
+}
+
+// 获取前台分类数据
+const getHomeCategoryData = async () => {
+  const res = await getHomeCategory()
+  categoryList.value = res.result
+
+}
+
+// 获取热门推荐数据
+const hotList = ref<HotItem[]>([])
+const getHomeHotData = async () => {
+  const res = await getHomeHot()
+  hotList.value = res.result
+}
+
+
+onLoad(() => {
+  getHomeBannerData()
+  getHomeCategoryData()
+  getHomeHotData()
+})
 </script>
 
-<style>
-.content {
+<template>
+  <CustomNavbar />
+  <scroll-view scroll-y class="scroll-view">
+    <XtxSwiper :list="bannerList" />
+    <CategoryPanel :list="categoryList" />
+    <HotPanel :list="hotList" />
+    <XtxGuess />
+  </scroll-view>
+</template>
+
+<style lang="scss">
+page {
+  background-color: #f7f7f7;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
+.scroll-view {
+  flex: 1;
 }
 </style>
