@@ -1,17 +1,46 @@
 <script setup lang="ts">
 import { getHomeGoodsGuessLike } from '@/services/home'
+import { PageParams } from '@/types/global'
 import type { GuessItem } from '@/types/home'
 import { onMounted, ref } from 'vue'
 
+
+const pageParams: Required<PageParams> = {
+    page: 1,
+    pageSize: 10
+}
+const finish = ref(false)
 // 猜你喜欢的列表
 const guessList = ref<GuessItem[]>([])
 // 获取猜你喜欢数据
 const getHomeGoodsGuessLikeData = async () => {
-    const res = await getHomeGoodsGuessLike()
+    if (finish.value) {
+        return
+    }
+    const res = await getHomeGoodsGuessLike(pageParams)
+    guessList.value.push(...res.result.items)
+    if (pageParams.page < res.result.pages) {
+        pageParams.page++
+    } else {
+        finish.value = true
+    }
 }
+
+// 重置数据
+const resetData = () => {
+    pageParams.page = 1;
+    guessList.value = [];
+    finish.value = false
+}
+
 // 组件挂载完毕
 onMounted(() => {
     getHomeGoodsGuessLikeData()
+})
+
+defineExpose({
+    getMore: getHomeGoodsGuessLikeData,
+    resetData
 })
 </script>
 
@@ -21,17 +50,16 @@ onMounted(() => {
         <text class="text">猜你喜欢</text>
     </view>
     <view class="guess">
-        <navigator class="guess-item" v-for="item in 10" :key="item" :url="`/pages/goods/goods`">
-            <image class="image" mode="aspectFill"
-                src="https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/uploads/goods_big_1.jpg"></image>
-            <view class="name"> 德国THORE男表 超薄手表男士休闲简约夜光石英防水直径40毫米 </view>
+        <navigator class="guess-item" v-for="item in guessList" :key="item.id">
+            <image class="image" mode="aspectFill" :src="item.picture"></image>
+            <view class="name"> {{ item.name }} </view>
             <view class="price">
                 <text class="small">¥</text>
-                <text>899.00</text>
+                <text>{{ item.price }}</text>
             </view>
         </navigator>
     </view>
-    <view class="loading-text"> 正在加载... </view>
+    <view class="loading-text"> {{ finish ? '没有更多数据' : '正在加载...' }} </view>
 </template>
 
 <style lang="scss">
@@ -117,4 +145,5 @@ onMounted(() => {
     font-size: 28rpx;
     color: #666;
     padding: 20rpx 0;
-}</style>
+}
+</style>

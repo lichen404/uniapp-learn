@@ -17,7 +17,7 @@ defineProps<{
       </view>
       <navigator
         hover-class="none"
-        url="/pages/recommend/recommend"
+        :url="`/pages/hot/hot?type=${item.type}`"
         class="cards"
       >
         <image
