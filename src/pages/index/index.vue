@@ -6,13 +6,13 @@ import { ref } from 'vue';
 import type { BannerItem, CategoryItem, HotItem } from '@/types/home';
 import CategoryPanel from './components/CategoryPanel.vue';
 import HotPanel from './components/HotPanel.vue';
-import { XtxGuessInstance } from '@/components/components';
+import { useGuessList } from '@/hooks/useGuessList';
 import PageSkeleton from './components/PageSkeleton.vue';
 
 
 const bannerList = ref<BannerItem[]>([])
 const categoryList = ref<CategoryItem[]>([])
-const guessRef = ref<XtxGuessInstance>()
+
 
 // 获取轮播图数据
 const getHomeBannerData = async () => {
@@ -34,9 +34,7 @@ const getHomeHotData = async () => {
   hotList.value = res.result
 }
 
-const onScrollToLower = () => {
-  guessRef.value?.getMore()
-}
+const { guessRef, onScrollToLower } = useGuessList()
 
 const isTriggered = ref(false)
 
