@@ -15,4 +15,5 @@ export default {
 <style lang="scss">
 /*每个页面公共css */
 @import '@/styles/base.scss';
+@import '@/styles/font.scss';
 </style>

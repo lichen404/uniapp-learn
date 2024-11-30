@@ -36,13 +36,13 @@ const { guessRef, onScrollToLower } = useGuessList()
       </view>
       <!-- 情况2：未登录 -->
       <view class="overview" v-else>
-        <navigator url="/pages/login/login" hover-class="none">
+        <navigator url="/pages/login/index" hover-class="none">
           <image class="avatar gray"
             src="http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-06/db628d42-88a7-46e7-abb8-659448c33081.png">
           </image>
         </navigator>
         <view class="meta">
-          <navigator url="/pages/login/login" hover-class="none" class="nickname">
+          <navigator url="/pages/login/index" hover-class="none" class="nickname">
             未登录
           </navigator>
           <view class="extra">
