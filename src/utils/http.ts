@@ -23,8 +23,8 @@ const httpInterceptor = {
     if (!options.url.startsWith('http')) {
       options.url = baseURL + options.url
     }
-    // 2. 请求超时, 默认 60s
-    options.timeout = 10000
+    // 2. 请求超时, 默认 30s
+    options.timeout = 1000 * 30
     // 3. 添加小程序端请求头标识
     options.header = {
       ...options.header,

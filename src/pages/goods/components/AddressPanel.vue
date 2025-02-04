@@ -1,8 +1,37 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
+import { AddressItem } from "@/types/address";
+import { getMemberAddressAPI } from '@/services/address'
+import { useAddressStore } from "@/stores/modules/address";
 // 子调父
 const emit = defineEmits<{
   (event: 'close'): void
 }>()
+
+// 获取收货地址列表数据
+const addressList = ref<AddressItem[]>([])
+
+const getMemberAddressData = async () => {
+  const res = await getMemberAddressAPI()
+  addressList.value = res.result
+}
+
+// 初始化调用(页面显示)
+onMounted(() => {
+  getMemberAddressData()
+})
+
+const addressStore = useAddressStore()
+
+const handleChange = (ev: any) => {
+  const target = addressList.value.find(item => item.id === ev.target.value)
+  if (target) {
+    addressStore.changeSelectedAddress(target)
+  }
+  emit('close')
+}
+
+
 </script>
 
 <template>
@@ -13,25 +42,20 @@ const emit = defineEmits<{
     <view class="title">配送至</view>
     <!-- 内容 -->
     <view class="content">
-      <view class="item">
-        <view class="user">李明 13824686868</view>
-        <view class="address">北京市顺义区后沙峪地区安平北街6号院</view>
-        <text class="icon icon-checked"></text>
-      </view>
-      <view class="item">
-        <view class="user">王东 13824686868</view>
-        <view class="address">北京市顺义区后沙峪地区安平北街6号院</view>
-        <text class="icon icon-ring"></text>
-      </view>
-      <view class="item">
-        <view class="user">张三 13824686868</view>
-        <view class="address">北京市朝阳区孙河安平北街6号院</view>
-        <text class="icon icon-ring"></text>
-      </view>
+      <radio-group @change="handleChange">
+        <view class="item" v-for="(item, index) in addressList" :key="index">
+          <view class=" user">{{ item.receiver }} {{ item.contact }}</view>
+          <view class="address">{{ item.fullLocation + item.address }}</view>
+          <radio :value="item.id" :checked="item.id === (addressStore.selectedAddress && addressStore.selectedAddress.id)" class="icon" />
+        </view>
+      </radio-group>
     </view>
     <view class="footer">
-      <view class="button primary"> 新建地址 </view>
-      <view v-if="false" class="button primary">确定</view>
+      <view class="button primary">
+        <navigator hover-class="none" url="/pagesMember/address-form/address-form">
+          新建地址
+        </navigator>
+      </view>
     </view>
   </view>
 </template>
@@ -65,6 +89,7 @@ const emit = defineEmits<{
   max-height: 540rpx;
   overflow: auto;
   padding: 20rpx;
+
   .item {
     padding: 30rpx 50rpx 30rpx 60rpx;
     background-size: 40rpx;
@@ -73,6 +98,7 @@ const emit = defineEmits<{
     background-image: url(https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/images/locate.png);
     position: relative;
   }
+
   .icon {
     color: #999;
     font-size: 40rpx;
@@ -81,17 +107,21 @@ const emit = defineEmits<{
     top: 50%;
     right: 0;
   }
+
   .icon-checked {
     color: #27ba9b;
   }
+
   .icon-ring {
     color: #444;
   }
+
   .user {
     font-size: 28rpx;
     color: #444;
     font-weight: 500;
   }
+
   .address {
     font-size: 26rpx;
     color: #666;

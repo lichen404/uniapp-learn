@@ -113,7 +113,7 @@ const gotoPayment = () => {
     })
   }
   // 跳转到结算页
-  uni.navigateTo({ url: '/pagesOrder/create/create' })
+  uni.navigateTo({ url: '/pagesOrder/create/index' })
 }
 
 // 猜你喜欢
@@ -206,7 +206,7 @@ const { guessRef, onScrollToLower} = useGuessList()
     <!-- 未登录: 提示登录 -->
     <view class="login-blank" v-else>
       <text class="text">登录后可查看购物车中的商品</text>
-      <navigator url="/pages/login/login" hover-class="none">
+      <navigator url="/pages/login/index" hover-class="none">
         <button class="button">去登录</button>
       </navigator>
     </view>

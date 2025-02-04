@@ -7,10 +7,11 @@ import type {
 import { postMemberCartAPI } from '@/services/cart'
 import { getGoodsById } from '@/services/goods'
 import type { GoodsResult } from '@/types/goods'
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { computed, ref } from 'vue'
 import AddressPanel from './components/AddressPanel.vue'
 import ServicePanel from './components/ServicePanel.vue'
+import { useAddressStore } from '@/stores/modules/address'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
@@ -22,6 +23,11 @@ const query = defineProps<{
 
 // 获取商品详情信息
 const goods = ref<GoodsResult>()
+
+
+const addressStore = useAddressStore()
+
+
 const getGoodsByIdData = async () => {
   const res = await getGoodsById(query.id)
   goods.value = res.result
@@ -50,9 +56,19 @@ const getGoodsByIdData = async () => {
   }
 }
 
+
+
 // 页面加载
 onLoad(() => {
   getGoodsByIdData()
+})
+
+onShareAppMessage(()=>{
+    return {
+      title: `${goods.value?.name}`,
+      path: `/pages/goods/goods?id=${goods.value?.id}`,
+      imageUrl: goods.value?.mainPictures[0]
+    }
 })
 
 // 轮播图变化时
@@ -115,27 +131,20 @@ const onAddCart = async (ev: SkuPopupEvent) => {
 }
 // 立即购买
 const onBuyNow = (ev: SkuPopupEvent) => {
-  uni.navigateTo({ url: `/pagesOrder/create/create?skuId=${ev._id}&count=${ev.buy_num}` })
+  uni.navigateTo({ url: `/pagesOrder/create/index?skuId=${ev._id}&count=${ev.buy_num}` })
 }
+
+const address = computed(() => addressStore.selectedAddress ? addressStore.selectedAddress.fullLocation + ' ' + addressStore.selectedAddress.address : '')
 </script>
 
 <template>
   <!-- SKU弹窗组件 -->
-  <vk-data-goods-sku-popup
-    v-model="isShowSku"
-    :localdata="localdata"
-    :mode="mode"
-    add-cart-background-color="#FFA868"
-    buy-now-background-color="#27BA9B"
-    ref="skuPopupRef"
-    :actived-style="{
+  <vk-data-goods-sku-popup v-model="isShowSku" :localdata="localdata" :mode="mode" add-cart-background-color="#FFA868"
+    buy-now-background-color="#27BA9B" ref="skuPopupRef" :actived-style="{
       color: '#27BA9B',
       borderColor: '#27BA9B',
       backgroundColor: '#E9F8F5',
-    }"
-    @add-cart="onAddCart"
-    @buy-now="onBuyNow"
-  />
+    }" @add-cart="onAddCart" @buy-now="onBuyNow" />
   <scroll-view enable-back-to-top scroll-y class="viewport">
     <!-- 基本信息 -->
     <view class="goods">
@@ -171,7 +180,7 @@ const onBuyNow = (ev: SkuPopupEvent) => {
         </view>
         <view @tap="openPopup('address')" class="item arrow">
           <text class="label">送至</text>
-          <text class="text ellipsis"> 请选择收获地址 </text>
+          <text class="text ellipsis"> {{ address || '请选择收获地址' }} </text>
         </view>
         <view @tap="openPopup('service')" class="item arrow">
           <text class="label">服务</text>
@@ -194,13 +203,7 @@ const onBuyNow = (ev: SkuPopupEvent) => {
           </view>
         </view>
         <!-- 图片详情 -->
-        <image
-          class="image"
-          v-for="item in goods?.details.pictures"
-          :key="item"
-          mode="widthFix"
-          :src="item"
-        ></image>
+        <image class="image" v-for="item in goods?.details.pictures" :key="item" mode="widthFix" :src="item"></image>
       </view>
     </view>
 
@@ -210,13 +213,8 @@ const onBuyNow = (ev: SkuPopupEvent) => {
         <text>同类推荐</text>
       </view>
       <view class="content">
-        <navigator
-          v-for="item in goods?.similarProducts"
-          :key="item.id"
-          class="goods"
-          hover-class="none"
-          :url="`/pages/goods/goods?id=${item.id}`"
-        >
+        <navigator v-for="item in goods?.similarProducts" :key="item.id" class="goods" hover-class="none"
+          :url="`/pages/goods/goods?id=${item.id}`">
           <image class="image" mode="aspectFill" :src="item.picture"></image>
           <view class="name ellipsis">{{ item.name }}</view>
           <view class="price">
@@ -269,6 +267,7 @@ page {
 .panel {
   margin-top: 20rpx;
   background-color: #fff;
+
   .title {
     display: flex;
     justify-content: space-between;
@@ -277,6 +276,7 @@ page {
     line-height: 1;
     padding: 30rpx 60rpx 30rpx 6rpx;
     position: relative;
+
     text {
       padding-left: 10rpx;
       font-size: 28rpx;
@@ -284,6 +284,7 @@ page {
       font-weight: 600;
       border-left: 4rpx solid #27ba9b;
     }
+
     navigator {
       font-size: 24rpx;
       color: #666;
@@ -307,13 +308,16 @@ page {
 /* 商品信息 */
 .goods {
   background-color: #fff;
+
   .preview {
     height: 750rpx;
     position: relative;
+
     .image {
       width: 750rpx;
       height: 750rpx;
     }
+
     .indicator {
       height: 40rpx;
       padding: 0 24rpx;
@@ -325,21 +329,26 @@ page {
       position: absolute;
       bottom: 30rpx;
       right: 30rpx;
+
       .current {
         font-size: 26rpx;
       }
+
       .split {
         font-size: 24rpx;
         margin: 0 1rpx 0 2rpx;
       }
+
       .total {
         font-size: 24rpx;
       }
     }
   }
+
   .meta {
     position: relative;
     border-bottom: 1rpx solid #eaeaea;
+
     .price {
       height: 130rpx;
       padding: 25rpx 30rpx 0;
@@ -348,9 +357,11 @@ page {
       box-sizing: border-box;
       background-color: #35c8a9;
     }
+
     .number {
       font-size: 56rpx;
     }
+
     .brand {
       width: 160rpx;
       height: 80rpx;
@@ -359,6 +370,7 @@ page {
       top: 26rpx;
       right: 30rpx;
     }
+
     .name {
       max-height: 88rpx;
       line-height: 1.4;
@@ -366,6 +378,7 @@ page {
       font-size: 32rpx;
       color: #333;
     }
+
     .desc {
       line-height: 1;
       padding: 0 20rpx 30rpx;
@@ -373,8 +386,10 @@ page {
       color: #cf4444;
     }
   }
+
   .action {
     padding-left: 20rpx;
+
     .item {
       height: 90rpx;
       padding-right: 60rpx;
@@ -384,15 +399,18 @@ page {
       position: relative;
       display: flex;
       align-items: center;
+
       &:last-child {
         border-bottom: 0 none;
       }
     }
+
     .label {
       width: 60rpx;
       color: #898b94;
       margin: 0 16rpx 0 10rpx;
     }
+
     .text {
       flex: 1;
       -webkit-line-clamp: 1;
@@ -403,15 +421,19 @@ page {
 /* 商品详情 */
 .detail {
   padding-left: 20rpx;
+
   .content {
     margin-left: -20rpx;
+
     .image {
       width: 100%;
     }
   }
+
   .properties {
     padding: 0 20rpx;
     margin-bottom: 30rpx;
+
     .item {
       display: flex;
       line-height: 2;
@@ -420,9 +442,11 @@ page {
       color: #333;
       border-bottom: 1rpx dashed #ccc;
     }
+
     .label {
       width: 200rpx;
     }
+
     .value {
       flex: 1;
     }
@@ -436,6 +460,7 @@ page {
     background-color: #f4f4f4;
     display: flex;
     flex-wrap: wrap;
+
     .goods {
       width: 340rpx;
       padding: 24rpx 20rpx 20rpx;
@@ -443,26 +468,31 @@ page {
       border-radius: 10rpx;
       background-color: #fff;
     }
+
     .image {
       width: 300rpx;
       height: 260rpx;
     }
+
     .name {
       height: 80rpx;
       margin: 10rpx 0;
       font-size: 26rpx;
       color: #262626;
     }
+
     .price {
       line-height: 1;
       font-size: 20rpx;
       color: #cf4444;
     }
+
     .number {
       font-size: 26rpx;
       margin-left: 2rpx;
     }
   }
+
   navigator {
     &:nth-child(even) {
       margin-right: 0;
@@ -485,9 +515,11 @@ page {
   justify-content: space-between;
   align-items: center;
   box-sizing: content-box;
+
   .buttons {
     display: flex;
-    & > view {
+
+    &>view {
       width: 220rpx;
       text-align: center;
       line-height: 72rpx;
@@ -495,19 +527,23 @@ page {
       color: #fff;
       border-radius: 72rpx;
     }
+
     .addcart {
       background-color: #ffa868;
     }
+
     .payment {
       background-color: #27ba9b;
       margin-left: 20rpx;
     }
   }
+
   .icons {
     padding-right: 20rpx;
     display: flex;
     align-items: center;
     flex: 1;
+
     // 兼容 H5 端和 App 端的导航链接样式
     .navigator-wrap,
     .icons-button {
@@ -520,10 +556,12 @@ page {
       font-size: 20rpx;
       color: #333;
       background-color: #fff;
+
       &::after {
         border: none;
       }
     }
+
     text {
       display: block;
       font-size: 34rpx;
