@@ -142,7 +142,7 @@ const onRefresherrefresh = async () => {
 </script>
 
 <template>
-  <scroll-view
+  <scroll-div
     enable-back-to-top
     scroll-y
     class="orders"
@@ -151,9 +151,9 @@ const onRefresherrefresh = async () => {
     @refresherrefresh="onRefresherrefresh"
     @scrolltolower="getMemberOrderData"
   >
-    <view class="card" v-for="order in orderList" :key="order.id">
+    <div class="card" v-for="order in orderList" :key="order.id">
       <!-- 订单信息 -->
-      <view class="status">
+      <div class="status">
         <text class="date">{{ order.createTime }}</text>
         <!-- 订单状态文字 -->
         <text>{{ orderStateList[order.orderState].text }}</text>
@@ -163,7 +163,7 @@ const onRefresherrefresh = async () => {
           class="icon-delete"
           @tap="onOrderDelete(order.id)"
         ></text>
-      </view>
+      </div>
       <!-- 商品信息，点击商品跳转到订单详情，不是商品详情 -->
       <navigator
         v-for="item in order.skus"
@@ -172,25 +172,25 @@ const onRefresherrefresh = async () => {
         :url="`/pagesOrder/detail/index?id=${order.id}`"
         hover-class="none"
       >
-        <view class="cover">
+        <div class="cover">
           <image class="image" mode="aspectFit" :src="item.image"></image>
-        </view>
-        <view class="meta">
-          <view class="name ellipsis">{{ item.name }}</view>
-          <view class="type">{{ item.attrsText }}</view>
-        </view>
+        </div>
+        <div class="meta">
+          <div class="name ellipsis">{{ item.name }}</div>
+          <div class="type">{{ item.attrsText }}</div>
+        </div>
       </navigator>
       <!-- 支付信息 -->
-      <view class="payment">
+      <div class="payment">
         <text class="quantity">共{{ order.totalNum }}件商品</text>
         <text>实付</text>
         <text class="amount"> <text class="symbol">¥</text>{{ order.payMoney }}</text>
-      </view>
+      </div>
       <!-- 订单操作按钮 -->
-      <view class="action">
+      <div class="action">
         <!-- 待付款状态：显示去支付按钮 -->
         <template v-if="order.orderState === OrderState.DaiFuKuan">
-          <view class="button primary" @tap="onOrderPay(order.id)">去支付</view>
+          <div class="button primary" @tap="onOrderPay(order.id)">去支付</div>
         </template>
         <template v-else>
           <navigator
@@ -201,21 +201,21 @@ const onRefresherrefresh = async () => {
             再次购买
           </navigator>
           <!-- 待收货状态: 展示确认收货 -->
-          <view
+          <div
             v-if="order.orderState === OrderState.DaiShouHuo"
             class="button primary"
             @tap="onOrderConfirm(order.id)"
           >
             确认收货
-          </view>
+          </div>
         </template>
-      </view>
-    </view>
+      </div>
+    </div>
     <!-- 底部提示文字 -->
-    <view class="loading-text" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
+    <div class="loading-text" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
       {{ isFinish ? '没有更多数据~' : '正在加载...' }}
-    </view>
-  </scroll-view>
+    </div>
+  </scroll-div>
 </template>
 
 <style lang="scss">

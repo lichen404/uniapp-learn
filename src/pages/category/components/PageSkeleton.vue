@@ -1,35 +1,35 @@
 <template name="skeleton">
-    <view class="sk-container">
-        <view class="viewport viewport">
-            <view class="search search">
-                <view class="input input">
+    <div class="sk-container">
+        <div class="viewport viewport">
+            <div class="search search">
+                <div class="input input">
                     <text class="icon-search sk-transparent sk-text-14-2857-590 sk-text">女靴</text>
-                </view>
-            </view>
-            <view class="categories categories">
-                <scroll-view :scroll-y="true" class="primary primary">
-                    <view class="item active sk-transparent sk-text-36-4583-773 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">居家</view>
-                    <view class="item sk-transparent sk-text-36-4583-864 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">美食</view>
-                    <view class="item sk-transparent sk-text-36-4583-997 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">服饰</view>
-                    <view class="item sk-transparent sk-text-36-4583-353 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">母婴</view>
-                    <view class="item sk-transparent sk-text-36-4583-225 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">个护</view>
-                    <view class="item sk-transparent sk-text-36-4583-844 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">严选</view>
-                    <view class="item sk-transparent sk-text-36-4583-391 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">数码</view>
-                    <view class="item sk-transparent sk-text-36-4583-991 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">运动</view>
-                    <view class="item sk-transparent sk-text-36-4583-798 sk-text sk-pseudo sk-pseudo-circle"
-                        style="background-position-x: 50%;">杂项</view>
-                </scroll-view>
-                <scroll-view :scroll-y="true" class="secondary secondary">
-                    <view is="components/XtxSwiper" class="banner banner">
-                        <view class="carousel XtxSwiper--carousel">
+                </div>
+            </div>
+            <div class="categories categories">
+                <scroll-div :scroll-y="true" class="primary primary">
+                    <div class="item active sk-transparent sk-text-36-4583-773 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">居家</div>
+                    <div class="item sk-transparent sk-text-36-4583-864 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">美食</div>
+                    <div class="item sk-transparent sk-text-36-4583-997 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">服饰</div>
+                    <div class="item sk-transparent sk-text-36-4583-353 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">母婴</div>
+                    <div class="item sk-transparent sk-text-36-4583-225 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">个护</div>
+                    <div class="item sk-transparent sk-text-36-4583-844 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">严选</div>
+                    <div class="item sk-transparent sk-text-36-4583-391 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">数码</div>
+                    <div class="item sk-transparent sk-text-36-4583-991 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">运动</div>
+                    <div class="item sk-transparent sk-text-36-4583-798 sk-text sk-pseudo sk-pseudo-circle"
+                        style="background-position-x: 50%;">杂项</div>
+                </scroll-div>
+                <scroll-div :scroll-y="true" class="secondary secondary">
+                    <div is="components/XtxSwiper" class="banner banner">
+                        <div class="carousel XtxSwiper--carousel">
                             <swiper :circular="true" :interval="3000" :current="0" :autoplay="false">
                                 <swiper-item
                                     style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
@@ -44,107 +44,107 @@
                                     </navigator>
                                 </swiper-item>
                             </swiper>
-                            <view class="indicator XtxSwiper--indicator">
+                            <div class="indicator XtxSwiper--indicator">
                                 <text class="dot XtxSwiper--dot active XtxSwiper--active"></text>
                                 <text class="dot XtxSwiper--dot"></text>
                                 <text class="dot XtxSwiper--dot"></text>
                                 <text class="dot XtxSwiper--dot"></text>
                                 <text class="dot XtxSwiper--dot"></text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="panel panel">
-                        <view class="title title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel">
+                        <div class="title title">
                             <text class="name sk-transparent sk-text-26-6667-95 sk-text">居家生活用品</text>
                             <navigator class="more sk-transparent sk-text-30-0000-311 sk-text sk-pseudo sk-pseudo-circle"
                                 hover-class="none">全部</navigator>
-                        </view>
-                        <view class="section section">
+                        </div>
+                        <div class="section section">
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-785 sk-text">法国年份雅文邑700毫升</view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-785 sk-text">法国年份雅文邑700毫升</div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-64 sk-text">1480.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-949 sk-text">梅乃宿梅酒720毫升</view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-949 sk-text">梅乃宿梅酒720毫升</div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-136 sk-text">168.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-218 sk-text">多米尼加陈年朗姆酒700毫升</view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-218 sk-text">多米尼加陈年朗姆酒700毫升</div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-835 sk-text">238.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-726 sk-text">川味牛肉辣椒酱190克</view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-726 sk-text">川味牛肉辣椒酱190克</div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-734 sk-text">38.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-950 sk-text">全新升级，四川酸辣粉195克*6杯
-                                </view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-950 sk-text">全新升级，四川酸辣粉195克*6杯
+                                </div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-125 sk-text">69.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-437 sk-text">极光限定 珠光蓝珐琅锅</view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-437 sk-text">极光限定 珠光蓝珐琅锅</div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-265 sk-text">199.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-789 sk-text">钻石陶瓷涂层多用锅18cm 小奶锅
-                                </view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-789 sk-text">钻石陶瓷涂层多用锅18cm 小奶锅
+                                </div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-795 sk-text">149.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-309 sk-text">智利老牌名庄，梅洛干红750毫升
-                                </view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-309 sk-text">智利老牌名庄，梅洛干红750毫升
+                                </div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-523 sk-text">98.00</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
-                                <view class="name ellipsis sk-transparent sk-text-14-2857-665 sk-text">原产兰州，气清味美，甜百合干168克
-                                </view>
-                                <view class="price price">
+                                <div class="name ellipsis sk-transparent sk-text-14-2857-665 sk-text">原产兰州，气清味美，甜百合干168克
+                                </div>
+                                <div class="price price">
                                     <text class="symbol sk-transparent sk-opacity">¥</text>
                                     <text class="number sk-transparent sk-text-14-2857-412 sk-text">42.80</text>
-                                </view>
+                                </div>
                             </navigator>
                             <navigator class="goods goods" hover-class="none">
                                 <image class="image sk-image"></image>
                             </navigator>
-                        </view>
-                    </view>
-                </scroll-view>
-            </view>
-        </view>
-    </view>
+                        </div>
+                    </div>
+                </scroll-div>
+            </div>
+        </div>
+    </div>
 </template>
 <style scoped>
 /*

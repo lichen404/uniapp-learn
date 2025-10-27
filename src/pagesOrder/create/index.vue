@@ -86,7 +86,7 @@ const onOrderSubmit = async () => {
 </script>
 
 <template>
-  <scroll-view enable-back-to-top scroll-y class="viewport">
+  <scroll-div enable-back-to-top scroll-y class="viewport">
     <!-- 收货地址 -->
     <navigator
       v-if="selectedAddress"
@@ -94,8 +94,8 @@ const onOrderSubmit = async () => {
       hover-class="none"
       url="/pagesMember/address/address?from=order"
     >
-      <view class="user"> {{ selectedAddress.receiver }} {{ selectedAddress.contact }} </view>
-      <view class="address"> {{ selectedAddress.fullLocation }} {{ selectedAddress.address }} </view>
+      <div class="user"> {{ selectedAddress.receiver }} {{ selectedAddress.contact }} </div>
+      <div class="address"> {{ selectedAddress.fullLocation }} {{ selectedAddress.address }} </div>
       <text class="icon icon-right"></text>
     </navigator>
     <navigator
@@ -104,12 +104,12 @@ const onOrderSubmit = async () => {
       hover-class="none"
       url="/pagesMember/address/address?from=order"
     >
-      <view class="address"> 请选择收货地址 </view>
+      <div class="address"> 请选择收货地址 </div>
       <text class="icon icon-right"></text>
     </navigator>
 
     <!-- 商品信息 -->
-    <view class="goods">
+    <div class="goods">
       <navigator
         v-for="item in orderPre?.goods"
         :key="item.skuId"
@@ -118,27 +118,27 @@ const onOrderSubmit = async () => {
         hover-class="none"
       >
         <image class="picture" :src="item.picture" />
-        <view class="meta">
-          <view class="name ellipsis"> {{ item.name }} </view>
-          <view class="attrs">{{ item.attrsText }}</view>
-          <view class="prices">
-            <view class="pay-price symbol">{{ item.payPrice }}</view>
-            <view class="price symbol">{{ item.price }}</view>
-          </view>
-          <view class="count">x{{ item.count }}</view>
-        </view>
+        <div class="meta">
+          <div class="name ellipsis"> {{ item.name }} </div>
+          <div class="attrs">{{ item.attrsText }}</div>
+          <div class="prices">
+            <div class="pay-price symbol">{{ item.payPrice }}</div>
+            <div class="price symbol">{{ item.price }}</div>
+          </div>
+          <div class="count">x{{ item.count }}</div>
+        </div>
       </navigator>
-    </view>
+    </div>
 
     <!-- 配送及支付方式 -->
-    <view class="related">
-      <view class="item">
+    <div class="related">
+      <div class="item">
         <text class="text">配送时间</text>
         <picker :range="deliveryList" range-key="text" @change="onChangeDelivery">
-          <view class="icon-fonts picker">{{ activeDelivery.text }}</view>
+          <div class="icon-fonts picker">{{ activeDelivery.text }}</div>
         </picker>
-      </view>
-      <view class="item">
+      </div>
+      <div class="item">
         <text class="text">订单备注</text>
         <input
           class="input"
@@ -146,31 +146,31 @@ const onOrderSubmit = async () => {
           placeholder="选题，建议留言前先与商家沟通确认"
           v-model="buyerMessage"
         />
-      </view>
-    </view>
+      </div>
+    </div>
 
     <!-- 支付金额 -->
-    <view class="settlement">
-      <view class="item">
+    <div class="settlement">
+      <div class="item">
         <text class="text">商品总价: </text>
         <text class="number symbol">{{ orderPre?.summary.totalPrice.toFixed(2) }}</text>
-      </view>
-      <view class="item">
+      </div>
+      <div class="item">
         <text class="text">运费: </text>
         <text class="number symbol">{{ orderPre?.summary.postFee.toFixed(2) }}</text>
-      </view>
-    </view>
-  </scroll-view>
+      </div>
+    </div>
+  </scroll-div>
 
   <!-- 吸底工具栏 -->
-  <view class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
-    <view class="total-pay symbol">
+  <div class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
+    <div class="total-pay symbol">
       <text class="number">{{ orderPre?.summary.totalPayPrice.toFixed(2) }}</text>
-    </view>
-    <view class="button" :class="{ disabled: !selectedAddress?.id }" @tap="onOrderSubmit">
+    </div>
+    <div class="button" :class="{ disabled: !selectedAddress?.id }" @tap="onOrderSubmit">
       提交订单
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

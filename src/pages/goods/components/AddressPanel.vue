@@ -35,29 +35,29 @@ const handleChange = (ev: any) => {
 </script>
 
 <template>
-  <view class="address-panel">
+  <div class="address-panel">
     <!-- 关闭按钮 -->
     <text class="close icon-close" @tap="emit('close')"></text>
     <!-- 标题 -->
-    <view class="title">配送至</view>
+    <div class="title">配送至</div>
     <!-- 内容 -->
-    <view class="content">
+    <div class="content">
       <radio-group @change="handleChange">
-        <view class="item" v-for="(item, index) in addressList" :key="index">
-          <view class=" user">{{ item.receiver }} {{ item.contact }}</view>
-          <view class="address">{{ item.fullLocation + item.address }}</view>
+        <div class="item" v-for="(item, index) in addressList" :key="index">
+          <div class=" user">{{ item.receiver }} {{ item.contact }}</div>
+          <div class="address">{{ item.fullLocation + item.address }}</div>
           <radio :value="item.id" :checked="item.id === (addressStore.selectedAddress && addressStore.selectedAddress.id)" class="icon" />
-        </view>
+        </div>
       </radio-group>
-    </view>
-    <view class="footer">
-      <view class="button primary">
+    </div>
+    <div class="footer">
+      <div class="button primary">
         <navigator hover-class="none" url="/pagesMember/address-form/address-form">
           新建地址
         </navigator>
-      </view>
-    </view>
-  </view>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

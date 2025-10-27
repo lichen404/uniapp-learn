@@ -23,9 +23,9 @@ orderTabs.value[activeIndex.value].isRender = true
 </script>
 
 <template>
-  <view class="viewport">
+  <div class="viewport">
     <!-- tabs -->
-    <view class="tabs">
+    <div class="tabs">
       <text
         class="item"
         v-for="(item, index) in orderTabs"
@@ -40,8 +40,8 @@ orderTabs.value[activeIndex.value].isRender = true
         {{ item.title }}
       </text>
       <!-- 游标 -->
-      <view class="cursor" :style="{ left: activeIndex * 20 + '%' }"></view>
-    </view>
+      <div class="cursor" :style="{ left: activeIndex * 20 + '%' }"></div>
+    </div>
     <!-- 滑动容器 -->
     <swiper class="swiper" :current="activeIndex" @change="activeIndex = $event.detail.current">
       <!-- 滑动项 -->
@@ -50,7 +50,7 @@ orderTabs.value[activeIndex.value].isRender = true
         <OrderList v-if="item.isRender" :order-state="item.orderState" />
       </swiper-item>
     </swiper>
-  </view>
+  </div>
 </template>
 
 <style lang="scss">

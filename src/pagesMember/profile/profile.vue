@@ -121,32 +121,32 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <view class="viewport">
+  <div class="viewport">
     <!-- 导航栏 -->
-    <view class="navbar" :style="{ paddingTop: safeAreaInsets?.top + 'px' }">
+    <div class="navbar" :style="{ paddingTop: safeAreaInsets?.top + 'px' }">
       <navigator open-type="navigateBack" class="back icon-left" hover-class="none"></navigator>
-      <view class="title">个人信息</view>
-    </view>
+      <div class="title">个人信息</div>
+    </div>
     <!-- 头像 -->
-    <view class="avatar">
-      <view @tap="onAvatarChange" class="avatar-content">
+    <div class="avatar">
+      <div @tap="onAvatarChange" class="avatar-content">
         <image class="image" :src="profile?.avatar" mode="aspectFill" />
         <text class="text">点击修改头像</text>
-      </view>
-    </view>
+      </div>
+    </div>
     <!-- 表单 -->
-    <view class="form">
+    <div class="form">
       <!-- 表单内容 -->
-      <view class="form-content">
-        <view class="form-item">
+      <div class="form-content">
+        <div class="form-item">
           <text class="label">账号</text>
           <text class="account placeholder">{{ profile?.account }}</text>
-        </view>
-        <view class="form-item">
+        </div>
+        <div class="form-item">
           <text class="label">昵称</text>
           <input class="input" type="text" placeholder="请填写昵称" v-model="profile.nickname" />
-        </view>
-        <view class="form-item">
+        </div>
+        <div class="form-item">
           <text class="label">性别</text>
           <radio-group @change="onGenderChange">
             <label class="radio">
@@ -158,8 +158,8 @@ const onSubmit = async () => {
               女
             </label>
           </radio-group>
-        </view>
-        <view class="form-item">
+        </div>
+        <div class="form-item">
           <text class="label">生日</text>
           <picker
             @change="onBirthdayChange"
@@ -169,13 +169,13 @@ const onSubmit = async () => {
             start="1900-01-01"
             :end="formatDate(new Date())"
           >
-            <view v-if="profile?.birthday">{{ profile?.birthday }}</view>
-            <view class="placeholder" v-else>请选择日期</view>
+            <div v-if="profile?.birthday">{{ profile?.birthday }}</div>
+            <div class="placeholder" v-else>请选择日期</div>
           </picker>
-        </view>
+        </div>
         <!-- 只有微信小程序端内置了省市区数据 -->
         <!-- #ifdef MP-WEIXIN -->
-        <view class="form-item">
+        <div class="form-item">
           <text class="label">城市</text>
           <picker
             @change="onFullLocationChange"
@@ -183,20 +183,20 @@ const onSubmit = async () => {
             class="picker"
             :value="profile?.fullLocation?.split(' ')"
           >
-            <view v-if="profile?.fullLocation">{{ profile.fullLocation }}</view>
-            <view class="placeholder" v-else>请选择城市</view>
+            <div v-if="profile?.fullLocation">{{ profile.fullLocation }}</div>
+            <div class="placeholder" v-else>请选择城市</div>
           </picker>
-        </view>
+        </div>
         <!-- #endif -->
-        <view class="form-item">
+        <div class="form-item">
           <text class="label">职业</text>
           <input class="input" type="text" placeholder="请填写职业" v-model="profile.profession" />
-        </view>
-      </view>
+        </div>
+      </div>
       <!-- 提交按钮 -->
       <button @tap="onSubmit" class="form-button">保 存</button>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

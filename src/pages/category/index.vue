@@ -38,47 +38,47 @@ const subCategoryList = computed(() => {
 </script>
 
 <template>
-  <view class="viewport" v-if="isFinish">
+  <div class="viewport" v-if="isFinish">
     <!-- 搜索框 -->
-    <view class="search">
-      <view class="input">
+    <div class="search">
+      <div class="input">
         <text class="icon-search">女靴</text>
-      </view>
-    </view>
+      </div>
+    </div>
     <!-- 分类 -->
-    <view class="categories">
+    <div class="categories">
       <!-- 左侧：一级分类 -->
-      <scroll-view class="primary" scroll-y>
-        <view v-for="(item, index) in categoryList" :key="item.id" class="item" :class="{ active: index === activeIndex }"
+      <scroll-div class="primary" scroll-y>
+        <div v-for="(item, index) in categoryList" :key="item.id" class="item" :class="{ active: index === activeIndex }"
           @tap="activeIndex = index">
           {{ item.name }}
-        </view>
-      </scroll-view>
+        </div>
+      </scroll-div>
       <!-- 右侧：二级分类 -->
-      <scroll-view class="secondary" scroll-y>
+      <scroll-div class="secondary" scroll-y>
         <!-- 焦点图 -->
         <XtxSwiper class="banner" :list="bannerList" />
         <!-- 内容区域 -->
-        <view class="panel" v-for="item in subCategoryList" :key="item.id">
-          <view class="title">
+        <div class="panel" v-for="item in subCategoryList" :key="item.id">
+          <div class="title">
             <text class="name">{{ item.name }}</text>
             <navigator class="more" hover-class="none">全部</navigator>
-          </view>
-          <view class="section">
+          </div>
+          <div class="section">
             <navigator v-for="goods in item.goods" :key="goods.id" class="goods" hover-class="none"
               :url="`/pages/goods/goods?id=${goods.id}`">
               <image class="image" :src="goods.picture"></image>
-              <view class="name ellipsis">{{ goods.name }}</view>
-              <view class="price">
+              <div class="name ellipsis">{{ goods.name }}</div>
+              <div class="price">
                 <text class="symbol">¥</text>
                 <text class="number">{{ goods.price }}</text>
-              </view>
+              </div>
             </navigator>
-          </view>
-        </view>
-      </scroll-view>
-    </view>
-  </view>
+          </div>
+        </div>
+      </scroll-div>
+    </div>
+  </div>
   <PageSkeleton v-else />
 </template>
 

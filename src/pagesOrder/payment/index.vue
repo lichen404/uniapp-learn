@@ -8,7 +8,7 @@ const query = defineProps<{
 }>()
 
 // 猜你喜欢
-const { guessRef, onScrolltoLower } = useGuessList()
+const { guessRef, onScrollToLower } = useGuessList()
 
 // 页面加载
 onLoad(() => {
@@ -22,12 +22,12 @@ onLoad(() => {
 </script>
 
 <template>
-  <scroll-view enable-back-to-top class="viewport" scroll-y @scrolltolower="onScrolltoLower">
+  <scroll-view enable-back-to-top class="viewport" scroll-y @scrolltolower="onScrollToLower">
     <!-- 订单状态 -->
-    <view class="overview">
-      <view class="status icon-checked">模拟支付成功</view>
-      <view class="tips">提示: 本小程序仅为教学演示用途，并未实际支付或购买商品或服务</view>
-      <view class="buttons">
+    <div class="overview">
+      <div class="status icon-checked">模拟支付成功</div>
+      <div class="tips">提示: 本小程序仅为教学演示用途，并未实际支付或购买商品或服务</div>
+      <div class="buttons">
         <navigator
           hover-class="none"
           class="button navigator"
@@ -44,8 +44,8 @@ onLoad(() => {
         >
           查看订单
         </navigator>
-      </view>
-    </view>
+      </div>
+    </div>
 
     <!-- 猜你喜欢 -->
     <XtxGuess ref="guessRef" />

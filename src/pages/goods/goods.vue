@@ -145,90 +145,90 @@ const address = computed(() => addressStore.selectedAddress ? addressStore.selec
       borderColor: '#27BA9B',
       backgroundColor: '#E9F8F5',
     }" @add-cart="onAddCart" @buy-now="onBuyNow" />
-  <scroll-view enable-back-to-top scroll-y class="viewport">
+  <scroll-div enable-back-to-top scroll-y class="viewport">
     <!-- 基本信息 -->
-    <view class="goods">
+    <div class="goods">
       <!-- 商品主图 -->
-      <view class="preview">
+      <div class="preview">
         <swiper @change="onChange" circular>
           <swiper-item v-for="item in goods?.mainPictures" :key="item">
             <image class="image" @tap="onTapImage(item)" mode="aspectFill" :src="item" />
           </swiper-item>
         </swiper>
-        <view class="indicator">
+        <div class="indicator">
           <text class="current">{{ currentIndex + 1 }}</text>
           <text class="split">/</text>
           <text class="total">{{ goods?.mainPictures.length }}</text>
-        </view>
-      </view>
+        </div>
+      </div>
 
       <!-- 商品简介 -->
-      <view class="meta">
-        <view class="price">
+      <div class="meta">
+        <div class="price">
           <text class="symbol">¥</text>
           <text class="number">{{ goods?.price }}</text>
-        </view>
-        <view class="name ellipsis">{{ goods?.name }}</view>
-        <view class="desc"> {{ goods?.desc }} </view>
-      </view>
+        </div>
+        <div class="name ellipsis">{{ goods?.name }}</div>
+        <div class="desc"> {{ goods?.desc }} </div>
+      </div>
 
       <!-- 操作面板 -->
-      <view class="action">
-        <view @tap="openSkuPopup(SkuMode.Both)" class="item arrow">
+      <div class="action">
+        <div @tap="openSkuPopup(SkuMode.Both)" class="item arrow">
           <text class="label">选择</text>
           <text class="text ellipsis"> {{ selectArrText }} </text>
-        </view>
-        <view @tap="openPopup('address')" class="item arrow">
+        </div>
+        <div @tap="openPopup('address')" class="item arrow">
           <text class="label">送至</text>
           <text class="text ellipsis"> {{ address || '请选择收获地址' }} </text>
-        </view>
-        <view @tap="openPopup('service')" class="item arrow">
+        </div>
+        <div @tap="openPopup('service')" class="item arrow">
           <text class="label">服务</text>
           <text class="text ellipsis"> 无忧退 快速退款 免费包邮 </text>
-        </view>
-      </view>
-    </view>
+        </div>
+      </div>
+    </div>
 
     <!-- 商品详情 -->
-    <view class="detail panel">
-      <view class="title">
+    <div class="detail panel">
+      <div class="title">
         <text>详情</text>
-      </view>
-      <view class="content">
-        <view class="properties">
+      </div>
+      <div class="content">
+        <div class="properties">
           <!-- 属性详情 -->
-          <view class="item" v-for="item in goods?.details.properties" :key="item.name">
+          <div class="item" v-for="item in goods?.details.properties" :key="item.name">
             <text class="label">{{ item.name }}</text>
             <text class="value">{{ item.value }}</text>
-          </view>
-        </view>
+          </div>
+        </div>
         <!-- 图片详情 -->
         <image class="image" v-for="item in goods?.details.pictures" :key="item" mode="widthFix" :src="item"></image>
-      </view>
-    </view>
+      </div>
+    </div>
 
     <!-- 同类推荐 -->
-    <view class="similar panel">
-      <view class="title">
+    <div class="similar panel">
+      <div class="title">
         <text>同类推荐</text>
-      </view>
-      <view class="content">
+      </div>
+      <div class="content">
         <navigator v-for="item in goods?.similarProducts" :key="item.id" class="goods" hover-class="none"
           :url="`/pages/goods/goods?id=${item.id}`">
           <image class="image" mode="aspectFill" :src="item.picture"></image>
-          <view class="name ellipsis">{{ item.name }}</view>
-          <view class="price">
+          <div class="name ellipsis">{{ item.name }}</div>
+          <div class="price">
             <text class="symbol">¥</text>
             <text class="number">{{ item.price }}</text>
-          </view>
+          </div>
         </navigator>
-      </view>
-    </view>
-  </scroll-view>
+      </div>
+    </div>
+  </scroll-div>
 
   <!-- 用户操作 -->
-  <view v-if="goods" class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
-    <view class="icons">
+  <div v-if="goods" class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
+    <div class="icons">
       <button class="icons-button"><text class="icon-heart"></text>收藏</button>
       <!-- #ifdef MP-WEIXIN -->
       <button class="icons-button" open-type="contact">
@@ -238,12 +238,12 @@ const address = computed(() => addressStore.selectedAddress ? addressStore.selec
       <navigator class="icons-button" url="/pages/cart/cart2" open-type="navigate">
         <text class="icon-cart"></text>购物车
       </navigator>
-    </view>
-    <view class="buttons">
-      <view @tap="openSkuPopup(SkuMode.Cart)" class="addcart"> 加入购物车 </view>
-      <view @tap="openSkuPopup(SkuMode.Buy)" class="payment"> 立即购买 </view>
-    </view>
-  </view>
+    </div>
+    <div class="buttons">
+      <div @tap="openSkuPopup(SkuMode.Cart)" class="addcart"> 加入购物车 </div>
+      <div @tap="openSkuPopup(SkuMode.Buy)" class="payment"> 立即购买 </div>
+    </div>
+  </div>
 
   <!-- uni-ui 弹出层 -->
   <uni-popup ref="popup" type="bottom" background-color="#fff">
@@ -519,7 +519,7 @@ page {
   .buttons {
     display: flex;
 
-    &>view {
+    &>div {
       width: 220rpx;
       text-align: center;
       line-height: 72rpx;

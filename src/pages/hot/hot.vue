@@ -68,35 +68,35 @@ onLoad(() => {
 </script>
 
 <template>
-  <view class="viewport">
+  <div class="viewport">
     <!-- 推荐封面图 -->
-    <view class="cover">
+    <div class="cover">
       <image :src="bannerPicture">
       </image>
 
-    </view>
+    </div>
     <!-- 推荐选项 -->
-    <view class="tabs">
+    <div class="tabs">
       <text v-for="(item, index) in subTypes" :key="item.id" class="text" :class="{ active: index === activeIndex }"
         @tap="activeIndex = index">{{ item.title }}</text>
-    </view>
+    </div>
     <!-- 推荐列表 -->
-    <scroll-view v-for="(item, index) in subTypes" :key="item.id" v-show="activeIndex === index" scroll-y
-      @scrolltolower="onScrollToLower" class="scroll-view">
-      <view class="goods">
+    <scroll-div v-for="(item, index) in subTypes" :key="item.id" v-show="activeIndex === index" scroll-y
+      @scrolltolower="onScrollToLower" class="scroll-div">
+      <div class="goods">
         <navigator hover-class="none" class="navigator" v-for="goods in item.goodsItems.items" :key="goods.id"
           :url="`/pages/goods/goods?id=${goods.id}`">
           <image class="thumb" :src="goods.picture"></image>
-          <view class="name ellipsis">{{ goods.name }}</view>
-          <view class="price">
+          <div class="name ellipsis">{{ goods.name }}</div>
+          <div class="price">
             <text class="symbol">¥</text>
             <text class="number">{{ goods.price }}</text>
-          </view>
+          </div>
         </navigator>
-      </view>
-      <view class="loading-text">{{ subTypes[activeIndex]?.finish ? '没有更多数据' : '正在加载...' }}</view>
-    </scroll-view>
-  </view>
+      </div>
+      <div class="loading-text">{{ subTypes[activeIndex]?.finish ? '没有更多数据' : '正在加载...' }}</div>
+    </scroll-div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -123,7 +123,7 @@ page {
   top: 0;
 }
 
-.scroll-view {
+.scroll-div {
   flex: 1;
 }
 

@@ -13,7 +13,7 @@ const onChange: UniHelper.SwiperOnChange = (ev) => {
 </script>
 
 <template>
-  <view class="carousel">
+  <div class="carousel">
     <swiper :circular="true" :autoplay="false" :interval="3000" @change="onChange">
       <swiper-item v-for="item in list" :key="item.id">
         <navigator url="/pages/index/index" hover-class="none" class="navigator">
@@ -22,11 +22,11 @@ const onChange: UniHelper.SwiperOnChange = (ev) => {
       </swiper-item>
     </swiper>
     <!-- 指示点 -->
-    <view class="indicator">
+    <div class="indicator">
       <text v-for="(item, index) in list" :key="item.id" class="dot"
         :class="{ active: index === activeIndex }"></text>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

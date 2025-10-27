@@ -56,7 +56,7 @@ onLoad(async () => {
 
 <template>
   <CustomNavbar />
-  <scroll-view scroll-y class="scroll-view" @scrolltolower="onScrollToLower" refresher-enabled
+  <scroll-div scroll-y class="scroll-div" @scrolltolower="onScrollToLower" refresher-enabled
     @refresherrefresh="onRefresherRefresh" :refresher-triggered="isTriggered">
     <PageSkeleton v-if="isLoading" />
     <template v-else>
@@ -66,7 +66,7 @@ onLoad(async () => {
       <XtxGuess ref="guessRef" />
     </template>
 
-  </scroll-view>
+  </scroll-div>
 </template>
 
 <style lang="scss">
@@ -77,7 +77,7 @@ page {
   flex-direction: column;
 }
 
-.scroll-view {
+.scroll-div {
   flex: 1;
 }
 </style>

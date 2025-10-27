@@ -118,7 +118,7 @@ const onCityChange: UniHelper.UniDataPickerOnChange = (ev) => {
 </script>
 
 <template>
-  <view class="content">
+  <div class="content">
     <uni-forms :rules="rules" :model="form" ref="formRef">
       <!-- 表单内容 -->
       <uni-forms-item name="receiver" class="form-item">
@@ -143,8 +143,8 @@ const onCityChange: UniHelper.UniDataPickerOnChange = (ev) => {
           mode="region"
           :value="form.fullLocation.split(' ')"
         >
-          <view v-if="form.fullLocation">{{ form.fullLocation }}</view>
-          <view v-else class="placeholder">请选择省/市/区(县)</view>
+          <div v-if="form.fullLocation">{{ form.fullLocation }}</div>
+          <div v-else class="placeholder">请选择省/市/区(县)</div>
         </picker>
         <!-- #endif -->
 
@@ -168,7 +168,7 @@ const onCityChange: UniHelper.UniDataPickerOnChange = (ev) => {
         <text class="label">详细地址</text>
         <input class="input" placeholder="街道、楼牌号等信息" v-model="form.address" />
       </uni-forms-item>
-      <view class="form-item">
+      <div class="form-item">
         <label class="label">设为默认地址</label>
         <switch
           @change="onSwitchChange"
@@ -176,9 +176,9 @@ const onCityChange: UniHelper.UniDataPickerOnChange = (ev) => {
           color="#27ba9b"
           :checked="form.isDefault === 1"
         />
-      </view>
+      </div>
     </uni-forms>
-  </view>
+  </div>
   <!-- 提交按钮 -->
   <button @tap="onSubmit" class="button">保存并使用</button>
 </template>

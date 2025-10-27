@@ -45,20 +45,20 @@ const onChangeAddress = (item: AddressItem) => {
 </script>
 
 <template>
-  <view class="viewport">
+  <div class="viewport">
     <!-- 地址列表 -->
-    <scroll-view enable-back-to-top class="scroll-view" scroll-y>
-      <view v-if="addressList.length" class="address">
+    <scroll-div enable-back-to-top class="scroll-div" scroll-y>
+      <div v-if="addressList.length" class="address">
         <uni-swipe-action class="address-list">
           <!-- 收货地址项 -->
           <uni-swipe-action-item class="item" v-for="item in addressList" :key="item.id">
-            <view class="item-content" @tap="onChangeAddress(item)">
-              <view class="user">
+            <div class="item-content" @tap="onChangeAddress(item)">
+              <div class="user">
                 {{ item.receiver }}
                 <text class="contact">{{ item.contact }}</text>
                 <text v-if="item.isDefault" class="badge">默认</text>
-              </view>
-              <view class="locate">{{ item.fullLocation }} {{ item.address }}</view>
+              </div>
+              <div class="locate">{{ item.fullLocation }} {{ item.address }}</div>
               <!-- H5 端需添加 .prevent 阻止链接的默认行为 -->
               <navigator
                 class="edit"
@@ -69,23 +69,23 @@ const onChangeAddress = (item: AddressItem) => {
               >
                 修改
               </navigator>
-            </view>
+            </div>
             <!-- 右侧插槽 -->
             <template #right>
               <button @tap="onDeleteAddress(item.id)" class="delete-button">删除</button>
             </template>
           </uni-swipe-action-item>
         </uni-swipe-action>
-      </view>
-      <view v-else class="blank">暂无收货地址</view>
-    </scroll-view>
+      </div>
+      <div v-else class="blank">暂无收货地址</div>
+    </scroll-div>
     <!-- 添加按钮 -->
-    <view class="add-btn">
+    <div class="add-btn">
       <navigator hover-class="none" url="/pagesMember/address-form/address-form">
         新建地址
       </navigator>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -114,7 +114,7 @@ page {
   height: 100%;
   background-color: #f4f4f4;
 
-  .scroll-view {
+  .scroll-div {
     padding-top: 20rpx;
   }
 }

@@ -21,30 +21,30 @@ const onLogout = () => {
 </script>
 
 <template>
-  <view class="viewport">
+  <div class="viewport">
     <!-- 列表1 -->
-    <view class="list" v-if="memberStore.profile">
+    <div class="list" v-if="memberStore.profile">
       <navigator url="/pagesMember/address/address" hover-class="none" class="item arrow">
         我的收货地址
       </navigator>
-    </view>
+    </div>
     <!-- #ifdef MP-WEIXIN -->
     <!-- 列表2 -->
-    <view class="list">
+    <div class="list">
       <button hover-class="none" class="item arrow" open-type="openSetting">授权管理</button>
       <button hover-class="none" class="item arrow" open-type="feedback">问题反馈</button>
       <button hover-class="none" class="item arrow" open-type="contact">联系我们</button>
-    </view>
+    </div>
     <!-- #endif -->
     <!-- 列表3 -->
-    <view class="list">
+    <div class="list">
       <button hover-class="none" class="item arrow">关于小兔鲜儿</button>
-    </view>
+    </div>
     <!-- 操作按钮 -->
-    <view class="action" v-if="memberStore.profile">
-      <view @tap="onLogout" class="button">退出登录</view>
-    </view>
-  </view>
+    <div class="action" v-if="memberStore.profile">
+      <div @tap="onLogout" class="button">退出登录</div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

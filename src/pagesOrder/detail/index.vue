@@ -194,9 +194,9 @@ const onOrderCancel = async () => {
 </script>
 
 <template>
-  <!-- 自定义导航栏: 默认透明不可见, scroll-view 滚动到 50 时展示 -->
-  <view class="navbar" :style="{ paddingTop: safeAreaInsets?.top + 'px' }">
-    <view class="wrap">
+  <!-- 自定义导航栏: 默认透明不可见, scroll-div 滚动到 50 时展示 -->
+  <div class="navbar" :style="{ paddingTop: safeAreaInsets?.top + 'px' }">
+    <div class="wrap">
       <navigator
         v-if="pages.length > 1"
         open-type="navigateBack"
@@ -204,10 +204,10 @@ const onOrderCancel = async () => {
       ></navigator>
       <navigator v-else url="/pages/index/index" open-type="switchTab" class="back icon-home">
       </navigator>
-      <view class="title">订单详情</view>
-    </view>
-  </view>
-  <scroll-view
+      <div class="title">订单详情</div>
+    </div>
+  </div>
+  <scroll-div
     enable-back-to-top
     scroll-y
     class="viewport"
@@ -216,11 +216,11 @@ const onOrderCancel = async () => {
   >
     <template v-if="order">
       <!-- 订单状态 -->
-      <view class="overview" :style="{ paddingTop: safeAreaInsets!.top + 20 + 'px' }">
+      <div class="overview" :style="{ paddingTop: safeAreaInsets!.top + 20 + 'px' }">
         <!-- 待付款状态:展示倒计时 -->
         <template v-if="order.orderState === OrderState.DaiFuKuan">
-          <view class="status icon-clock">等待付款</view>
-          <view class="tips">
+          <div class="status icon-clock">等待付款</div>
+          <div class="tips">
             <text class="money">应付金额: ¥ {{ order.payMoney }}</text>
             <text class="time">支付剩余</text>
             <uni-countdown
@@ -231,14 +231,14 @@ const onOrderCancel = async () => {
               :show-colon="false"
               @timeup="onTimeup"
             />
-          </view>
-          <view class="button" @tap="onOrderPay">去支付</view>
+          </div>
+          <div class="button" @tap="onOrderPay">去支付</div>
         </template>
         <!-- 其他订单状态:展示再次购买按钮 -->
         <template v-else>
           <!-- 订单状态文字 -->
-          <view class="status"> {{ orderStateList[order.orderState].text }} </view>
-          <view class="button-group">
+          <div class="status"> {{ orderStateList[order.orderState].text }} </div>
+          <div class="button-group">
             <navigator
               class="button"
               :url="`/pagesOrder/create/create?orderId=${query.id}`"
@@ -247,43 +247,43 @@ const onOrderCancel = async () => {
               再次购买
             </navigator>
             <!-- 待发货状态：模拟发货,开发期间使用,用于修改订单状态为已发货 -->
-            <view
+            <div
               v-if="isDev && order.orderState == OrderState.DaiFaHuo"
               @tap="onOrderSend"
               class="button"
             >
               模拟发货
-            </view>
+            </div>
             <!-- 待收货状态: 展示确认收货按钮 -->
-            <view
+            <div
               v-if="order.orderState === OrderState.DaiShouHuo"
               @tap="onOrderConfirm"
               class="button"
             >
               确认收货
-            </view>
-          </view>
+            </div>
+          </div>
         </template>
-      </view>
+      </div>
       <!-- 配送状态 -->
-      <view class="shipment">
+      <div class="shipment">
         <!-- 订单物流信息 -->
-        <view v-for="item in logisticList" :key="item.id" class="item">
-          <view class="message">
+        <div v-for="item in logisticList" :key="item.id" class="item">
+          <div class="message">
             {{ item.text }}
-          </view>
-          <view class="date"> {{ item.time }} </view>
-        </view>
+          </div>
+          <div class="date"> {{ item.time }} </div>
+        </div>
         <!-- 用户收货地址 -->
-        <view class="locate">
-          <view class="user"> {{ order.receiverContact }} {{ order.receiverMobile }} </view>
-          <view class="address"> {{ order.receiverAddress }} </view>
-        </view>
-      </view>
+        <div class="locate">
+          <div class="user"> {{ order.receiverContact }} {{ order.receiverMobile }} </div>
+          <div class="address"> {{ order.receiverAddress }} </div>
+        </div>
+      </div>
 
       <!-- 商品信息 -->
-      <view class="goods">
-        <view class="item">
+      <div class="goods">
+        <div class="item">
           <navigator
             class="navigator"
             v-for="item in order.skus"
@@ -292,62 +292,62 @@ const onOrderCancel = async () => {
             hover-class="none"
           >
             <image class="cover" :src="item.image"></image>
-            <view class="meta">
-              <view class="name ellipsis">{{ item.name }}</view>
-              <view class="type">{{ item.attrsText }}</view>
-              <view class="price">
-                <view class="actual">
+            <div class="meta">
+              <div class="name ellipsis">{{ item.name }}</div>
+              <div class="type">{{ item.attrsText }}</div>
+              <div class="price">
+                <div class="actual">
                   <text class="symbol">¥</text>
                   <text>{{ item.curPrice }}</text>
-                </view>
-              </view>
-              <view class="quantity">x{{ item.quantity }}</view>
-            </view>
+                </div>
+              </div>
+              <div class="quantity">x{{ item.quantity }}</div>
+            </div>
           </navigator>
           <!-- 待评价状态:展示按钮 -->
-          <view class="action" v-if="order.orderState === OrderState.DaiPingJia">
-            <view class="button primary">申请售后</view>
+          <div class="action" v-if="order.orderState === OrderState.DaiPingJia">
+            <div class="button primary">申请售后</div>
             <navigator url="" class="button"> 去评价 </navigator>
-          </view>
-        </view>
+          </div>
+        </div>
         <!-- 合计 -->
-        <view class="total">
-          <view class="row">
-            <view class="text">商品总价: </view>
-            <view class="symbol">{{ order.totalMoney }}</view>
-          </view>
-          <view class="row">
-            <view class="text">运费: </view>
-            <view class="symbol">{{ order.postFee }}</view>
-          </view>
-          <view class="row">
-            <view class="text">应付金额: </view>
-            <view class="symbol primary">{{ order.payMoney }}</view>
-          </view>
-        </view>
-      </view>
+        <div class="total">
+          <div class="row">
+            <div class="text">商品总价: </div>
+            <div class="symbol">{{ order.totalMoney }}</div>
+          </div>
+          <div class="row">
+            <div class="text">运费: </div>
+            <div class="symbol">{{ order.postFee }}</div>
+          </div>
+          <div class="row">
+            <div class="text">应付金额: </div>
+            <div class="symbol primary">{{ order.payMoney }}</div>
+          </div>
+        </div>
+      </div>
 
       <!-- 订单信息 -->
-      <view class="detail">
-        <view class="title">订单信息</view>
-        <view class="row">
-          <view class="item">
+      <div class="detail">
+        <div class="title">订单信息</div>
+        <div class="row">
+          <div class="item">
             订单编号: {{ query.id }} <text class="copy" @tap="onCopy(query.id)">复制</text>
-          </view>
-          <view class="item">下单时间: {{ order.createTime }}</view>
-        </view>
-      </view>
+          </div>
+          <div class="item">下单时间: {{ order.createTime }}</div>
+        </div>
+      </div>
 
       <!-- 猜你喜欢 -->
       <XtxGuess ref="guessRef" />
 
       <!-- 底部操作栏 -->
-      <view class="toolbar-height" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }"></view>
-      <view class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
+      <div class="toolbar-height" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }"></div>
+      <div class="toolbar" :style="{ paddingBottom: safeAreaInsets?.bottom + 'px' }">
         <!-- 待付款状态:展示支付按钮 -->
         <template v-if="order.orderState === OrderState.DaiFuKuan">
-          <view class="button primary" @tap="onOrderPay"> 去支付 </view>
-          <view class="button" @tap="popup?.open?.()"> 取消订单 </view>
+          <div class="button primary" @tap="onOrderPay"> 去支付 </div>
+          <div class="button" @tap="popup?.open?.()"> 取消订单 </div>
         </template>
         <!-- 其他订单状态:按需展示按钮 -->
         <template v-else>
@@ -359,47 +359,47 @@ const onOrderCancel = async () => {
             再次购买
           </navigator>
           <!-- 待收货状态: 展示确认收货 -->
-          <view
+          <div
             class="button primary"
             v-if="order.orderState === OrderState.DaiShouHuo"
             @tap="onOrderConfirm"
           >
             确认收货
-          </view>
+          </div>
           <!-- 待评价状态: 展示去评价 -->
-          <view class="button" v-if="order.orderState === OrderState.DaiPingJia"> 去评价 </view>
+          <div class="button" v-if="order.orderState === OrderState.DaiPingJia"> 去评价 </div>
           <!-- 待评价/已完成/已取消 状态: 展示删除订单 -->
-          <view
+          <div
             class="button delete"
             v-if="order.orderState >= OrderState.DaiPingJia"
             @tap="onOrderDelete"
           >
             删除订单
-          </view>
+          </div>
         </template>
-      </view>
+      </div>
     </template>
     <template v-else>
       <!-- 骨架屏组件 -->
       <PageSkeleton />
     </template>
-  </scroll-view>
+  </scroll-div>
   <!-- 取消订单弹窗 -->
   <uni-popup ref="popup" type="bottom" background-color="#fff">
-    <view class="popup-root">
-      <view class="title">订单取消</view>
-      <view class="description">
-        <view class="tips">请选择取消订单的原因：</view>
-        <view class="cell" v-for="item in reasonList" :key="item" @tap="reason = item">
+    <div class="popup-root">
+      <div class="title">订单取消</div>
+      <div class="description">
+        <div class="tips">请选择取消订单的原因：</div>
+        <div class="cell" v-for="item in reasonList" :key="item" @tap="reason = item">
           <text class="text">{{ item }}</text>
           <text class="icon" :class="{ checked: item === reason }"></text>
-        </view>
-      </view>
-      <view class="footer">
-        <view class="button" @tap="popup?.close?.()">取消</view>
-        <view class="button primary" @tap="onOrderCancel">确认</view>
-      </view>
-    </view>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="button" @tap="popup?.close?.()">取消</div>
+        <div class="button primary" @tap="onOrderCancel">确认</div>
+      </div>
+    </div>
   </uni-popup>
 </template>
 

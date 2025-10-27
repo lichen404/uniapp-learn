@@ -1,7 +1,7 @@
 <!-- 步进器 -->
 <template>
-  <view class="vk-data-input-number-box">
-    <view
+  <div class="vk-data-input-number-box">
+    <div
       class="u-icon-minus"
       :class="{ 'u-icon-disabled': disabled || inputVal <= min }"
       :style="{
@@ -14,8 +14,8 @@
       @touchstart.prevent="btnTouchStart('minus')"
       @touchend.stop.prevent="clearTimer"
     >
-      <view :style="'font-size:' + (Number(size) + 10) + 'rpx'" class="num-btn">－</view>
-    </view>
+      <div :style="'font-size:' + (Number(size) + 10) + 'rpx'" class="num-btn">－</div>
+    </div>
     <input
       v-model="inputVal"
       :disabled="disabledInput || disabled"
@@ -32,7 +32,7 @@
       }"
       @blur="onBlur"
     />
-    <view
+    <div
       class="u-icon-plus"
       :class="{ 'u-icon-disabled': disabled || inputVal >= max }"
       :style="{
@@ -45,9 +45,9 @@
       @touchstart.prevent="btnTouchStart('plus')"
       @touchend.stop.prevent="clearTimer"
     >
-      <view :style="'font-size:' + (Number(size) + 10) + 'rpx'" class="num-btn">＋</view>
-    </view>
-  </view>
+      <div :style="'font-size:' + (Number(size) + 10) + 'rpx'" class="num-btn">＋</div>
+    </div>
+  </div>
 </template>
 
 <script>

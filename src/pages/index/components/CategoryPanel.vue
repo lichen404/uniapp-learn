@@ -6,12 +6,12 @@ defineProps<{ list: CategoryItem[] }>()
 </script>
 
 <template>
-  <view class="category">
+  <div class="category">
     <navigator class="category-item" hover-class="none" url="/pages/index/index" v-for="item in list" :key="item.id">
       <image class="icon" :src="item.icon"></image>
       <text class="text">{{ item.name }}</text>
     </navigator>
-  </view>
+  </div>
 </template>
 
 <style lang="scss">

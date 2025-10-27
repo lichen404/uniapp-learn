@@ -1,129 +1,129 @@
 <template name="skeleton">
-    <view class="sk-container">
-      <scroll-view
+    <div class="sk-container">
+      <scroll-div
         :scroll-y="true"
         class="viewport sk-transparent"
         id="scroller"
         :enable-back-to-top="true"
       >
-        <view class="overview sk-image" style="padding-top: 64px">
-          <view class="status sk-transparent sk-text-0-0000-826 sk-text">待收货</view>
-        </view>
-        <view class="shipment">
+        <div class="overview sk-image" style="padding-top: 64px;">
+          <div class="status sk-transparent sk-text-0-0000-826 sk-text">待收货</div>
+        </div>
+        <div class="shipment">
           <navigator class="logistics sk-image sk-pseudo sk-pseudo-circle" hover-class="none">
-            <view class="message sk-transparent sk-text-14-2857-512 sk-text"
-              >小兔兔到了小福家里，请签收</view
+            <div class="message sk-transparent sk-text-14-2857-512 sk-text"
+              >小兔兔到了小福家里，请签收</div
             >
-            <view class="date sk-transparent sk-text-14-2857-990 sk-text">2023-04-15 23:23:04</view>
+            <div class="date sk-transparent sk-text-14-2857-990 sk-text">2023-04-15 23:23:04</div>
           </navigator>
-          <view class="locate sk-image">
-            <view class="user sk-transparent sk-text-14-2857-630 sk-text">苏东坡 13633336666</view>
-            <view class="address sk-transparent sk-text-14-2857-606 sk-text"
-              >广东省 广州市 天河区吉山幼儿园</view
+          <div class="locate sk-image">
+            <div class="user sk-transparent sk-text-14-2857-630 sk-text">苏东坡 13633336666</div>
+            <div class="address sk-transparent sk-text-14-2857-606 sk-text"
+              >广东省 广州市 天河区吉山幼儿园</div
             >
-          </view>
-        </view>
-        <view class="goods">
-          <view class="item">
+          </div>
+        </div>
+        <div class="goods">
+          <div class="item">
             <navigator class="navigator" hover-class="none">
               <image class="cover sk-image"></image>
-              <view class="meta">
-                <view class="name ellipsis sk-transparent sk-text-14-2857-474 sk-text"
-                  >厚厚一按就干爽，埃及进口长绒棉毛巾</view
+              <div class="meta">
+                <div class="name ellipsis sk-transparent sk-text-14-2857-474 sk-text"
+                  >厚厚一按就干爽，埃及进口长绒棉毛巾</div
                 >
-                <view class="type sk-transparent sk-text-22-2222-237 sk-text"
-                  >超值4条装（灰蓝色+粉色+银灰+嫩黄）</view
+                <div class="type sk-transparent sk-text-22-2222-237 sk-text"
+                  >超值4条装（灰蓝色+粉色+银灰+嫩黄）</div
                 >
-                <view class="price">
-                  <view class="actual">
+                <div class="price">
+                  <div class="actual">
                     <text class="symbol sk-transparent sk-opacity">¥</text>
                     <text class="sk-transparent sk-text-14-2857-102 sk-text">68</text>
-                  </view>
-                </view>
-                <view class="quantity sk-transparent sk-opacity">x1</view>
-              </view>
+                  </div>
+                </div>
+                <div class="quantity sk-transparent sk-opacity">x1</div>
+              </div>
             </navigator>
             <navigator class="navigator" hover-class="none">
               <image class="cover sk-image"></image>
-              <view class="meta">
-                <view class="name ellipsis sk-transparent sk-text-14-2857-969 sk-text"
-                  >KJE金属色系轻量电动车骑行盔男女通用</view
+              <div class="meta">
+                <div class="name ellipsis sk-transparent sk-text-14-2857-969 sk-text"
+                  >KJE金属色系轻量电动车骑行盔男女通用</div
                 >
-                <view class="type sk-transparent sk-text-22-2222-510 sk-text">玫瑰金L</view>
-                <view class="price">
-                  <view class="actual">
+                <div class="type sk-transparent sk-text-22-2222-510 sk-text">玫瑰金L</div>
+                <div class="price">
+                  <div class="actual">
                     <text class="symbol sk-transparent sk-opacity">¥</text>
                     <text class="sk-transparent sk-text-14-2857-431 sk-text">120</text>
-                  </view>
-                </view>
-                <view class="quantity sk-transparent sk-opacity">x1</view>
-              </view>
+                  </div>
+                </div>
+                <div class="quantity sk-transparent sk-opacity">x1</div>
+              </div>
             </navigator>
             <navigator class="navigator" hover-class="none">
               <image class="cover sk-image"></image>
-              <view class="meta">
-                <view class="name ellipsis sk-transparent sk-text-14-2857-130 sk-text"
-                  >源自澳洲进口羊毛，儿童奢暖羊毛被升级款</view
+              <div class="meta">
+                <div class="name ellipsis sk-transparent sk-text-14-2857-130 sk-text"
+                  >源自澳洲进口羊毛，儿童奢暖羊毛被升级款</div
                 >
-                <view class="type sk-transparent sk-text-22-2222-110 sk-text"
-                  >春秋款， 100%羊毛款：150x200cm，适合1.2米/1.35米床</view
+                <div class="type sk-transparent sk-text-22-2222-110 sk-text"
+                  >春秋款， 100%羊毛款：150x200cm，适合1.2米/1.35米床</div
                 >
-                <view class="price">
-                  <view class="actual">
+                <div class="price">
+                  <div class="actual">
                     <text class="symbol sk-transparent sk-opacity">¥</text>
                     <text class="sk-transparent sk-text-14-2857-273 sk-text">289</text>
-                  </view>
-                </view>
-                <view class="quantity sk-transparent sk-opacity">x1</view>
-              </view>
+                  </div>
+                </div>
+                <div class="quantity sk-transparent sk-opacity">x1</div>
+              </div>
             </navigator>
-          </view>
-          <view class="total">
-            <view class="row">
-              <view class="text sk-transparent sk-text-0-0000-302 sk-text">商品总价: </view>
-              <view
+          </div>
+          <div class="total">
+            <div class="row">
+              <div class="text sk-transparent sk-text-0-0000-302 sk-text">商品总价: </div>
+              <div
                 class="symbol sk-transparent sk-text-0-0000-998 sk-text sk-pseudo sk-pseudo-circle"
-                >477</view
+                >477</div
               >
-            </view>
-            <view class="row">
-              <view class="text sk-transparent sk-text-0-0000-912 sk-text">运费: </view>
-              <view
+            </div>
+            <div class="row">
+              <div class="text sk-transparent sk-text-0-0000-912 sk-text">运费: </div>
+              <div
                 class="symbol sk-transparent sk-text-0-0000-208 sk-text sk-pseudo sk-pseudo-circle"
-                >2</view
+                >2</div
               >
-            </view>
-            <view class="row">
-              <view class="text sk-transparent sk-text-0-0000-538 sk-text">应付金额: </view>
-              <view
+            </div>
+            <div class="row">
+              <div class="text sk-transparent sk-text-0-0000-538 sk-text">应付金额: </div>
+              <div
                 class="symbol primary sk-transparent sk-text-0-0000-858 sk-text sk-pseudo sk-pseudo-circle"
-                >479</view
+                >479</div
               >
-            </view>
-          </view>
-        </view>
-        <view class="detail">
-          <view class="title sk-transparent sk-text-0-0000-66 sk-text">订单信息</view>
-          <view class="row">
-            <view class="item sk-transparent">
+            </div>
+          </div>
+        </div>
+        <div class="detail">
+          <div class="title sk-transparent sk-text-0-0000-66 sk-text">订单信息</div>
+          <div class="row">
+            <div class="item sk-transparent">
               订单编号: 1645809639951962113
               <text class="copy sk-transparent sk-text-0-0000-522 sk-text">复制</text>
-            </view>
-            <view class="item sk-transparent sk-text-0-0000-353 sk-text"
-              >下单时间: 2023-04-11 23:22:50</view
+            </div>
+            <div class="item sk-transparent sk-text-0-0000-353 sk-text"
+              >下单时间: 2023-04-11 23:22:50</div
             >
-          </view>
-        </view>
+          </div>
+        </div>
   
-        <view class="toolbar" style="padding-bottom: 34px">
-          <view
+        <div class="toolbar" style="padding-bottom: 34px">
+          <div
             class="button primary sk-transparent sk-text-31-9444-411 sk-text"
             style="background-position-x: 50%"
-            >再次购买</view
+            >再次购买</div
           >
-        </view>
-      </scroll-view>
-    </view>
+        </div>
+      </scroll-div>
+    </div>
   </template>
   
   <style>

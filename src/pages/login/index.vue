@@ -1,28 +1,28 @@
 <template>
-    <view class="viewport">
-    <view class="logo">
+    <div class="viewport">
+    <div class="logo">
       <image
         src="https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/images/logo_icon.png"
       ></image>
-    </view>
-    <view class="login">
+    </div>
+    <div class="login">
       <button class="button phone" open-type="getPhoneNumber" @getphonenumber="onGetPhoneNumber">
         <text class="icon icon-phone"></text>
         手机号快捷登录
       </button>
-      <view class="extra">
-        <view class="caption">
+      <div class="extra">
+        <div class="caption">
           <text>其他登录方式</text>
-        </view>
-        <view class="options">
+        </div>
+        <div class="options">
           <button @tap="onGetPhoneNumberSimple">
             <text class="icon icon-phone">模拟快捷登录</text>
           </button>
-        </view>
-      </view>
-      <view class="tips">登录/注册即视为你同意《服务条款》和《小兔鲜儿隐私协议》</view>
-    </view>
-  </view>
+        </div>
+      </div>
+      <div class="tips">登录/注册即视为你同意《服务条款》和《小兔鲜儿隐私协议》</div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>

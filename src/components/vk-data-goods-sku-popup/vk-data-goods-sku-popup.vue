@@ -1,5 +1,5 @@
 <template>
-  <view
+  <div
     class="vk-data-goods-sku-popup"
     catchtouchmove="true"
     :class="valueCom && complete ? 'show' : 'none'"
@@ -7,8 +7,8 @@
     @click.stop="stop"
   >
     <!-- 页面内容开始 -->
-    <view class="mask" @click="close('mask')"></view>
-    <view
+    <div class="mask" @click="close('mask')"></div>
+    <div
       class="layer attr-content"
       :class="{ 'safe-area-inset-bottom': safeAreaInsetBottom }"
       :style="{
@@ -16,10 +16,10 @@
         paddingBottom: safeBottom + 'px',
       }"
     >
-      <view class="specification-wrapper">
-        <scroll-view class="specification-wrapper-content" scroll-y="true">
-          <view class="specification-header">
-            <view class="specification-left">
+      <div class="specification-wrapper">
+        <scroll-div class="specification-wrapper-content" scroll-y="true">
+          <div class="specification-header">
+            <div class="specification-left">
               <image
                 class="product-img"
                 :src="selectShop.image ? selectShop.image : goodsInfo[goodsThumbName]"
@@ -27,30 +27,30 @@
                 mode="aspectFill"
                 @click="previewImage"
               ></image>
-            </view>
-            <view class="specification-right">
-              <view class="price-content" :style="{ color: themeColorFn('priceColor') }">
+            </div>
+            <div class="specification-right">
+              <div class="price-content" :style="{ color: themeColorFn('priceColor') }">
                 <text class="sign">¥</text>
                 <text class="price" :class="priceCom.length > 16 ? 'price2' : ''">{{
                   priceCom
                 }}</text>
-              </view>
-              <view class="inventory" v-if="!hideStock">{{ stockText }}：{{ stockCom }}</view>
-              <view class="inventory" v-else></view>
-              <view class="choose" v-show="isManyCom">已选：{{ selectArr.join(' ') }}</view>
-            </view>
-          </view>
+              </div>
+              <div class="inventory" v-if="!hideStock">{{ stockText }}：{{ stockCom }}</div>
+              <div class="inventory" v-else></div>
+              <div class="choose" v-show="isManyCom">已选：{{ selectArr.join(' ') }}</div>
+            </div>
+          </div>
 
-          <view class="specification-content">
-            <view
+          <div class="specification-content">
+            <div
               v-show="isManyCom"
               class="specification-item"
               v-for="(item, index1) in goodsInfo[specListName]"
               :key="index1"
             >
-              <view class="item-title">{{ item.name }}</view>
-              <view class="item-wrapper">
-                <view
+              <div class="item-title">{{ item.name }}</div>
+              <div class="item-wrapper">
+                <div
                   class="item-content"
                   v-for="(item_value, index2) in item.list"
                   :key="index2"
@@ -66,12 +66,12 @@
                   @click="skuClick(item_value, index1, index2)"
                 >
                   {{ item_value.name }}
-                </view>
-              </view>
-            </view>
-            <view class="number-box-view">
-              <view style="flex: 1">数量</view>
-              <view style="flex: 4; text-align: right">
+                </div>
+              </div>
+            </div>
+            <div class="number-box-div">
+              <div style="flex: 1">数量</div>
+              <div style="flex: 4; text-align: right">
                 <vk-data-input-number-box
                   v-model="selectNum"
                   :min="minBuyNum || 1"
@@ -81,22 +81,22 @@
                   :positive-integer="true"
                   @change="numChange"
                 ></vk-data-input-number-box>
-              </view>
-            </view>
-          </view>
-        </scroll-view>
-        <view class="close" @click="close('close')" v-if="showClose != false"
+              </div>
+            </div>
+          </div>
+        </scroll-div>
+        <div class="close" @click="close('close')" v-if="showClose != false"
           ><image class="close-item" :src="closeImage"></image
-        ></view>
-      </view>
+        ></div>
+      </div>
 
-      <view class="btn-wrapper" v-if="outFoStock || mode == 4">
-        <view class="sure" style="color: #ffffff; background-color: #cccccc">{{
+      <div class="btn-wrapper" v-if="outFoStock || mode == 4">
+        <div class="sure" style="color: #ffffff; background-color: #cccccc">{{
           noStockText
-        }}</view>
-      </view>
-      <view class="btn-wrapper" v-else-if="mode == 1">
-        <view
+        }}</div>
+      </div>
+      <div class="btn-wrapper" v-else-if="mode == 1">
+        <div
           class="sure add-cart"
           style="border-radius: 38rpx 0rpx 0rpx 38rpx"
           :style="{
@@ -106,9 +106,9 @@
           @click="addCart"
         >
           {{ addCartText }}
-        </view>
+        </div>
 
-        <view
+        <div
           class="sure"
           style="border-radius: 0rpx 38rpx 38rpx 0rpx"
           :style="{
@@ -118,10 +118,10 @@
           @click="buyNow"
         >
           {{ buyNowText }}
-        </view>
-      </view>
-      <view class="btn-wrapper" v-else-if="mode == 2">
-        <view
+        </div>
+      </div>
+      <div class="btn-wrapper" v-else-if="mode == 2">
+        <div
           class="sure add-cart"
           :style="{
             color: themeColorFn('addCartColor'),
@@ -130,10 +130,10 @@
           @click="addCart"
         >
           {{ addCartText }}
-        </view>
-      </view>
-      <view class="btn-wrapper" v-else-if="mode == 3">
-        <view
+        </div>
+      </div>
+      <div class="btn-wrapper" v-else-if="mode == 3">
+        <div
           class="sure"
           :style="{
             color: themeColorFn('buyNowColor'),
@@ -142,11 +142,11 @@
           @click="buyNow"
         >
           {{ buyNowText }}
-        </view>
-      </view>
-    </view>
+        </div>
+      </div>
+    </div>
     <!-- 页面内容结束 -->
-  </view>
+  </div>
 </template>
 
 <script>
@@ -1314,7 +1314,7 @@ export default {
               }
             }
           }
-          .number-box-view {
+          .number-box-div {
             display: flex;
             padding-top: 30rpx;
           }

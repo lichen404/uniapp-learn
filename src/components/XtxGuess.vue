@@ -46,20 +46,20 @@ defineExpose({
 
 <template>
     <!-- 猜你喜欢 -->
-    <view class="caption">
+    <div class="caption">
         <text class="text">猜你喜欢</text>
-    </view>
-    <view class="guess">
+    </div>
+    <div class="guess">
         <navigator class="guess-item" v-for="item in guessList" :key="item.id" :url="`/pages/goods/goods?id=${item.id}`">
             <image class="image" mode="aspectFill" :src="item.picture"></image>
-            <view class="name"> {{ item.name }} </view>
-            <view class="price">
+            <div class="name"> {{ item.name }} </div>
+            <div class="price">
                 <text class="small">¥</text>
                 <text>{{ item.price }}</text>
-            </view>
+            </div>
         </navigator>
-    </view>
-    <view class="loading-text"> {{ finish ? '没有更多数据' : '正在加载...' }} </view>
+    </div>
+    <div class="loading-text"> {{ finish ? '没有更多数据' : '正在加载...' }} </div>
 </template>
 
 <style lang="scss">

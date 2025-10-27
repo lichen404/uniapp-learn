@@ -16,8 +16,8 @@
 更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
 -->
 <template name="skeleton">
-  <view is="components/XtxSwiper">
-    <view class="carousel XtxSwiper--carousel">
+  <div is="components/XtxSwiper">
+    <div class="carousel XtxSwiper--carousel">
       <swiper :circular="true" :interval="3000" :current="0" :autoplay="false">
         <swiper-item
           style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
@@ -26,17 +26,17 @@
           </navigator>
         </swiper-item>
       </swiper>
-      <view class="indicator XtxSwiper--indicator">
+      <div class="indicator XtxSwiper--indicator">
         <text class="dot XtxSwiper--dot active XtxSwiper--active"></text>
         <text class="dot XtxSwiper--dot"></text>
         <text class="dot XtxSwiper--dot"></text>
         <text class="dot XtxSwiper--dot"></text>
         <text class="dot XtxSwiper--dot"></text>
-      </view>
-    </view>
-  </view>
-  <view is="pages/index/components/CategoryPanel">
-    <view class="category CategoryPanel--category">
+      </div>
+    </div>
+  </div>
+  <div is="pages/index/components/CategoryPanel">
+    <div class="category CategoryPanel--category">
       <navigator class="category-item CategoryPanel--category-item" hover-class="none">
         <image class="icon CategoryPanel--icon sk-image"></image>
         <text class="text CategoryPanel--text sk-transparent sk-text-14-2857-725 sk-text">居家</text>
@@ -77,57 +77,57 @@
         <image class="icon CategoryPanel--icon sk-image"></image>
         <text class="text CategoryPanel--text sk-transparent sk-text-14-2857-979 sk-text">品牌</text>
       </navigator>
-    </view>
-  </view>
-  <view is="pages/index/components/HotPanel">
-    <view class="panel HotPanel--panel hot HotPanel--hot">
-      <view class="item HotPanel--item">
-        <view class="title HotPanel--title">
+    </div>
+  </div>
+  <div is="pages/index/components/HotPanel">
+    <div class="panel HotPanel--panel hot HotPanel--hot">
+      <div class="item HotPanel--item">
+        <div class="title HotPanel--title">
           <text class="title-text HotPanel--title-text sk-transparent sk-text-14-2857-631 sk-text">特惠推荐</text>
           <text class="title-desc HotPanel--title-desc sk-transparent sk-text-14-2857-114 sk-text">精选全攻略</text>
-        </view>
+        </div>
         <navigator class="cards HotPanel--cards" hover-class="none">
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
         </navigator>
-      </view>
-      <view class="item HotPanel--item">
-        <view class="title HotPanel--title">
+      </div>
+      <div class="item HotPanel--item">
+        <div class="title HotPanel--title">
           <text class="title-text HotPanel--title-text sk-transparent sk-text-14-2857-605 sk-text">爆款推荐</text>
           <text class="title-desc HotPanel--title-desc sk-transparent sk-text-14-2857-240 sk-text">最受欢迎</text>
-        </view>
+        </div>
         <navigator class="cards HotPanel--cards" hover-class="none">
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
         </navigator>
-      </view>
-      <view class="item HotPanel--item">
-        <view class="title HotPanel--title">
+      </div>
+      <div class="item HotPanel--item">
+        <div class="title HotPanel--title">
           <text class="title-text HotPanel--title-text sk-transparent sk-text-14-2857-101 sk-text">一站买全</text>
           <text class="title-desc HotPanel--title-desc sk-transparent sk-text-14-2857-333 sk-text">精心优选</text>
-        </view>
+        </div>
         <navigator class="cards HotPanel--cards" hover-class="none">
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
         </navigator>
-      </view>
-      <view class="item HotPanel--item">
-        <view class="title HotPanel--title">
+      </div>
+      <div class="item HotPanel--item">
+        <div class="title HotPanel--title">
           <text class="title-text HotPanel--title-text sk-transparent sk-text-14-2857-122 sk-text">新鲜好物</text>
           <text class="title-desc HotPanel--title-desc sk-transparent sk-text-14-2857-761 sk-text">生活加分项</text>
-        </view>
+        </div>
         <navigator class="cards HotPanel--cards" hover-class="none">
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
           <image class="image HotPanel--image sk-image" mode="aspectFit"></image>
         </navigator>
-      </view>
-    </view>
-  </view>
-  <view is="components/XtxGuess" class="r r">
-    <view class="caption XtxGuess--caption">
+      </div>
+    </div>
+  </div>
+  <div is="components/XtxGuess" class="r r">
+    <div class="caption XtxGuess--caption">
       <text class="text XtxGuess--text sk-transparent sk-text-0-0000-866 sk-text sk-pseudo sk-pseudo-circle">猜你喜欢</text>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <style scoped>

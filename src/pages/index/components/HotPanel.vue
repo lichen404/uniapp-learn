@@ -9,12 +9,12 @@ defineProps<{
 
 <template>
   <!-- 推荐专区 -->
-  <view class="panel hot">
-    <view class="item" v-for="item in list" :key="item.id">
-      <view class="title">
+  <div class="panel hot">
+    <div class="item" v-for="item in list" :key="item.id">
+      <div class="title">
         <text class="title-text">{{ item.title }}</text>
         <text class="title-desc">{{ item.alt }}</text>
-      </view>
+      </div>
       <navigator
         hover-class="none"
         :url="`/pages/hot/hot?type=${item.type}`"
@@ -28,8 +28,8 @@ defineProps<{
           :src="src"
         ></image>
       </navigator>
-    </view>
-  </view>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
